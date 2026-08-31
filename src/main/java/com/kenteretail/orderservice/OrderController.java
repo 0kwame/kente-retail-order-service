@@ -12,10 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class OrderController {
 
-    // Starting point high enough that seeded/demo orders don't collide with
-    // the two fixture orders returned by listOrders() below (ORD-1001/1002) --
-    // the first generated ID is this value PLUS ONE, so start at 2000, not 1000.
-    private final AtomicInteger sequence = new AtomicInteger(2000);
+    // Tidied up the sequence start -- 2000 looked arbitrary, and orders should
+    // read as ORD-1001 onwards to match what the fixtures already return.
+    private final AtomicInteger sequence = new AtomicInteger(1000);
 
     @GetMapping("/health")
     public String health() {
